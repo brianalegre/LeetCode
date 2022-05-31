@@ -42,27 +42,20 @@ Only one valid answer exists.
 const input = [2, 7, 11, 15]
 
 var twoSum = function (nums, target) {
+    // Create a hash map
+    let map = new Map();
+    // Loop thru the array
     for (let i = 0; i < nums.length; i++) {
-        if (nums + nums[i] == target) {
-            console.log(nums, nums[i])
+        // Assign Numbers
+        let num1 = nums[i];
+        let num2 = target - num1;
+        // Check if Map has seen num2
+        if (map.has(num2)) {
+            // Get the index number
+            return [i, map.get(num2)]
         }
+        // Save the index number of num1
+        map.set(num1, i)
 
-    };
-};
-
-twoSum(input, 9)
-// console.log('im here')
-
-for (let i = 0; i < input.length; i++) {
-    // if (input[0] + input[i] == 9) {
-    //     console.log(0, i)
-    // } else {
-    //     console.log('Nothing works')
-    // }
-    let targetValue = input[0] + input[i];
-    if (targetValue == 9) {
-        console.log(0, i)
     }
-    // console.log(input[i])
-
 }
