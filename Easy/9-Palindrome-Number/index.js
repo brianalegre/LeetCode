@@ -30,5 +30,11 @@ Follow up: Could you solve it without converting the integer to a string?
  * @return {boolean}
  */
 var isPalindrome = function (x) {
+    // Check if number is negative
+    if (x < 0) {
+        return false;
+    }
+    let number = x;
+    
 
 };
