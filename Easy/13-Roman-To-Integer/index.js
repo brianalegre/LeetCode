@@ -19,3 +19,44 @@ C can be placed before D (500) and M (1000) to make 400 and 900.
 Given a roman numeral, convert it to an integer.
 
 */
+
+/*
+ * @param {string} s
+ * @return {number}
+ */
+
+var romanToInt = function (s) {
+    // Declare variables
+    let sum = 0;
+    let prev = 0;
+    let current = 0;
+    let map = new Map();
+
+    // Map the roman numerals to their values
+    map.set('I', 1);
+    map.set('V', 5);
+    map.set('X', 10);
+    map.set('L', 50);
+    map.set('C', 100);
+    map.set('D', 500);
+    map.set('M', 1000);
+
+    // Loop through the string
+    for (let i = 0; i < s.length; i++) {
+        // Get the current value
+        current = map.get(s[i]);
+
+        // Check if the current value is greater than the previous value
+        if (current > prev) {
+            // Subtract the previous value from the current value
+            sum += current - 2 * prev;
+        } else {
+            // Add the current value to the sum
+            sum += current;
+        }
+
+        // Set the previous value
+        prev = current;
+    }
+
+};
