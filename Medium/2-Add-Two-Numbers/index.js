@@ -28,3 +28,27 @@ The number of nodes in each linked list is in the range [1, 100].
 It is guaranteed that the list represents a number that does not have leading zeros.
 
 */
+
+
+var addTwoNumbers = function (l1, l2) {
+    let l3 = new ListNode(0);
+    let current
+    let carry = 0;
+    let sum = 0;
+    let head = l3;
+    while (l1 || l2) {
+        sum = (l1 ? l1.val : 0) + (l2 ? l2.val : 0) + carry;
+        carry = Math.floor(sum / 10);
+        current = new ListNode(sum % 10);
+        head.next = current;
+        head = current;
+        l1 = l1 ? l1.next : l1;
+        l2 = l2 ? l2.next : l2;
+    }
+    if (carry > 0) {
+        current = new ListNode(carry);
+        head.next = current;
+        head = current;
+    }
+    return l3.next;
+};
