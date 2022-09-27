@@ -31,10 +31,20 @@ Follow up: Could you solve it without converting the integer to a string?
  */
 var isPalindrome = function (x) {
     // Check if number is negative
-    if (x < 0) {
-        return false;
+    if (x < 0) return false;
+
+    // Declare variables
+    let rev = 0;
+    let num = x;
+
+    // Reverse the number
+    while (num > 0) {
+        // Get the last digit
+        rev = rev * 10 + num % 10
+
+        // Round down the number
+        num = Math.floor(num / 10);
     }
-    let number = x;
-    
+    return rev === x;
 
 };
